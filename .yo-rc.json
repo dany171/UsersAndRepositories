@@ -7,5 +7,18 @@
     "files-comments": "bower:js,endbower",
     "bower-components-path": "bower_components",
     "test-files": "test/mock/**/*.js,test/spec/**/*.js"
+  },
+  "generator-ng-fullstack": {
+    "appName": "UsersRepositories",
+    "username": "daniel",
+    "userEmail": "dany171@gmail.com",
+    "stack": "client",
+    "repoHostUrl": "github.com",
+    "userNameSpace": "daniel",
+    "client": "ng2",
+    "stylePreprocessor": "none",
+    "server": "",
+    "secure": false,
+    "testsSeparated": true
   }
 }

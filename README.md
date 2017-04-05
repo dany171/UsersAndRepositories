@@ -1,12 +1,3 @@
-# ur
-
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
-
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+# UsersRepositories
+[![Build Status](https://secure.travis-ci.org/daniel/UsersRepositories.png?branch=master)](https://travis-ci.org/daniel/UsersRepositories)
+[![Coverage Status](https://coveralls.io/repos/daniel/UsersRepositories/badge.svg?branch=master)](https://coveralls.io/r/daniel/UsersRepositories/?branch=master)
