@@ -11,9 +11,12 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_1 = require("./app");
-var todo_cmp_1 = require("./todo/components/todo-cmp");
-var todo_route_1 = require("./todo/components/todo-route");
-var todo_service_1 = require("./todo/services/todo-service");
+//import { TodoCmp }   from "./todo/components/todo-cmp";
+//import { todoRouting } from "./todo/components/todo-route";
+//import { TodoService }   from "./todo/services/todo-service";
+var users_1 = require("./users/components/users");
+var users_route_1 = require("./users/components/users-route");
+var users_service_1 = require("./users/services/users-service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,17 +28,17 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            todo_route_1.todoRouting
+            users_route_1.usersRouting
         ],
         declarations: [
             app_1.App,
-            todo_cmp_1.TodoCmp,
+            users_1.Users,
         ],
         providers: [
-            todo_service_1.TodoService,
+            users_service_1.UsersService,
         ],
         bootstrap: [
-            app_1.App,
+            app_1.App
         ],
     })
 ], AppModule);
