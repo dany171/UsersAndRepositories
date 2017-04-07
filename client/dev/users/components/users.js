@@ -16,16 +16,16 @@ var Users = (function () {
     function Users(router, usersService) {
         this.router = router;
         this.usersService = usersService;
-        this.name = "yo, I\"m your component :D";
         this.groups = [];
-        this.mode = 'Observable';
     }
     Users.prototype.ngOnInit = function () {
         this.getUsers();
     };
     Users.prototype.getUsers = function () {
         var _this = this;
-        this.usersService.getUsers().subscribe(function (users) {
+        this.usersService
+            .getUsers()
+            .subscribe(function (users) {
             _this.users = users;
             _this.createGroups(users);
         }, function (error) { return _this.errorMessage = error; });

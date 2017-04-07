@@ -10,13 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var User = (function () {
-    function User(login, id, avatar_url, url, html_url, repos_url) {
+var Repository = (function () {
+    function Repository(id, name, full_name, html_url, description, url) {
     }
-    return User;
+    return Repository;
 }());
-User = __decorate([
+Repository = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [String, Number, String, String, String, String])
-], User);
-exports.User = User;
+    __metadata("design:paramtypes", [Number, String, String, String, String, String])
+], Repository);
+exports.Repository = Repository;

@@ -8,6 +8,7 @@ import { App }   from "./app";
 //import { TodoService }   from "./todo/services/todo-service";
 
 import { Users }   from "./users/components/users";
+import { RepositoriesComponent }   from "./users/components/repositories";
 import { usersRouting } from "./users/components/users-route";
 import { UsersService }   from "./users/services/users-service";
 
@@ -22,6 +23,7 @@ import { UsersService }   from "./users/services/users-service";
     declarations: [
       App,
       Users,
+      RepositoriesComponent
     ],
     providers: [
       UsersService,

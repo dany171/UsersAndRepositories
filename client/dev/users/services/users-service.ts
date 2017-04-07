@@ -1,21 +1,31 @@
 import {Injectable} from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 
 import { User } from '../models/user';
+import { Repository } from '../models/repository';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UsersService {
     
-  private usersUrl = 'https://api.github.com/users';  
-  
+  private baseURL = 'https://api.github.com';
+  private usersURL = '/users';  
+  private repositoriesURL = '/users/login/repos'; 
+
   constructor(private http: Http) { }
   
   
   getUsers(): Observable<User[]> {
-        return this.http.get(this.usersUrl)
+        return this.http.get(this.baseURL+this.usersURL)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getRepositories(login: string): Observable<Repository[]>{    
+      console.log('login:'+login);
+      return this.http.get(this.baseURL+this.repositoriesURL.replace(/login/gi,login))
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -25,9 +35,8 @@ export class UsersService {
     return body || { };
   }
 
-     private handleError (error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
-    let errMsg: string;
+  private handleError (error: Response | any) {    
+    let errMsg: string;      
     if (error instanceof Response) {
       const body = error.json() || '';
       const err = body.error || JSON.stringify(body);

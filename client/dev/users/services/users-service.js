@@ -17,10 +17,18 @@ require("rxjs/add/operator/map");
 var UsersService = (function () {
     function UsersService(http) {
         this.http = http;
-        this.usersUrl = 'https://api.github.com/users';
+        this.baseURL = 'https://api.github.com';
+        this.usersURL = '/users';
+        this.repositoriesURL = '/users/login/repos';
     }
     UsersService.prototype.getUsers = function () {
-        return this.http.get(this.usersUrl)
+        return this.http.get(this.baseURL + this.usersURL)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    UsersService.prototype.getRepositories = function (login) {
+        console.log('login:' + login);
+        return this.http.get(this.baseURL + this.repositoriesURL.replace(/login/gi, login))
             .map(this.extractData)
             .catch(this.handleError);
     };
@@ -29,7 +37,6 @@ var UsersService = (function () {
         return body || {};
     };
     UsersService.prototype.handleError = function (error) {
-        // In a real world app, you might use a remote logging infrastructure
         var errMsg;
         if (error instanceof Response) {
             var body = error.json() || '';

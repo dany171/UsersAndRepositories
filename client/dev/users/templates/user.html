@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Userss</h1>
+  <h1>Users</h1>
   <div class="row row-eq-height small" *ngFor="let group of groups" >          
     <div *ngFor="let user of group" class="col-md-3 img-thumbnail" >
       <img *ngIf="user.avatar_url" src="{{user.avatar_url}}" alt="avatar" class="img-responsive" width="100" height="100">

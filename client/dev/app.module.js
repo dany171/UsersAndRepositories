@@ -15,6 +15,7 @@ var app_1 = require("./app");
 //import { todoRouting } from "./todo/components/todo-route";
 //import { TodoService }   from "./todo/services/todo-service";
 var users_1 = require("./users/components/users");
+var repositories_1 = require("./users/components/repositories");
 var users_route_1 = require("./users/components/users-route");
 var users_service_1 = require("./users/services/users-service");
 var AppModule = (function () {
@@ -33,6 +34,7 @@ AppModule = __decorate([
         declarations: [
             app_1.App,
             users_1.Users,
+            repositories_1.RepositoriesComponent
         ],
         providers: [
             users_service_1.UsersService,
