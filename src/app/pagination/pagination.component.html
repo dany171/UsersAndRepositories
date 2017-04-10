@@ -1,0 +1,5 @@
+<div class="pagination">
+  <a *ngIf="hasPrevious()" (click)="previousPage()">Previous</a>
+  <a >{{currentPage}}</a>
+  <a *ngIf="hasNext()" (click)="nextPage()">Next</a>
+</div>

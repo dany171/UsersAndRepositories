@@ -1,0 +1,10 @@
+<h3>Repositories</h3>
+<section class="main" *ngIf="repositories.length > 0">
+  <div class="row row-eq-height small" *ngFor="let group of groups" >          
+    <div *ngFor="let repository of group" class="col-md-3 img-thumbnail" >
+      <app-repository-detail [repository]="repository"></app-repository-detail>              
+    </div>        
+  </div>
+  <app-pagination [totalElements]="user.public_repos" [range]="RANGE" [currentPage]="1" (onPageChange)="onPageChange($event)"></app-pagination>
+</section>
+<a routerLink="/users">Back</a>      

@@ -1,0 +1,9 @@
+<h3>Users</h3>
+<section class="main" *ngIf="users.length > 0">
+  <div class="row row-eq-height small" *ngFor="let group of groups" >          
+    <div *ngFor="let user of group" class="col-md-3 img-thumbnail" >
+      <app-user-detail [user]="user"></app-user-detail>              
+    </div>        
+  </div>
+</section>
+<app-user-list-pagination (onUserListPageChange)="onUserListPageChange()"></app-user-list-pagination>

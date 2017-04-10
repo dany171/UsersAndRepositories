@@ -1,44 +1,28 @@
-# UsersRepositories
-[![Build Status](https://secure.travis-ci.org/daniel/UsersRepositories.png?branch=master)](https://travis-ci.org/daniel/UsersRepositories)
-[![Coverage Status](https://coveralls.io/repos/daniel/UsersRepositories/badge.svg?branch=master)](https://coveralls.io/r/daniel/UsersRepositories/?branch=master)
+# UsersAndRepositories
 
-Installation:
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-npm install
+## Development server
 
-Run app:
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-npm run dev
+## Code scaffolding
 
-Users URL: 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-http://127.0.0.1:3000/
+## Build
 
-Repositories:
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-http://127.0.0.1:3000/user/<username>/repositories
+## Running unit tests
 
-Eg.
-http://127.0.0.1:3000/user/mojombo/repositories
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running end-to-end tests
 
-TODO:
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-Page 1:
+## Further help
 
-- Add link to page 2
-
-Page 2:
-
-- Add issues count
-- Add open issues count
-- Add forks count
-- Add pagination for page 2
-
-There are many improvements to do in this project:
-- Re factor routing
-- Decouple components
-- Formalize naming convention
-- Add unit tests
-- Fix code smells
-- Fix dependencies Warns
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
