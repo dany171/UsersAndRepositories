@@ -30,6 +30,7 @@ import { UserListPaginationComponent } from './user-list-pagination/user-list-pa
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule,
     AppRoutingModule,
     AlertModule.forRoot()
   ],

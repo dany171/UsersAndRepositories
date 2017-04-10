@@ -6,7 +6,7 @@ import { User } from './user';
 import { UserDataService } from './user-data.service';
 
 describe('UserDataService', () => {  
-  
+  let since = 1;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [ HttpModule ],
@@ -18,8 +18,7 @@ describe('UserDataService', () => {
     expect(userDataService).toBeTruthy();
   }));
   
-  describe('#getUsers()', () => {
-  
+  describe('#getUsers()', () => {  
     it('should return an Observable<Array<User>>', inject(
       [UserDataService, XHRBackend], 
       (userDataService, mockBackend) => {
@@ -46,7 +45,7 @@ describe('UserDataService', () => {
             body: JSON.stringify(mockResponse)
           })));
         });
-        userDataService.getUsers().subscribe((users) => {
+        userDataService.getUsers(since).subscribe((users) => {
           expect(users.length).toBe(2);
           expect(users[0].login).toEqual('dan');
           expect(users[1].login).toEqual('carl');            

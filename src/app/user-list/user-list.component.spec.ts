@@ -1,70 +1,45 @@
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs/Observable';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserListComponent } from './user-list.component';
 import { UserDataService } from '../user-data.service';
 import { User } from '../user';
-
+import { By } from '@angular/platform-browser';
+import { HttpModule, Http, BaseRequestOptions, XHRBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 describe('UserListComponent', () => {  
-  
-  const mockUsers = { 
-    entries:[
-              { id: 1,
-                login: 'dan',
-                avatar_url: 'http://dan.com/avatar.jpg',
-                url: 'http://dan.com',
-                html_url: 'http://dan.com/html',
-                repos_url: 'http://dan.com/repos' },
-              { id: 2,
-                login: 'carl',
-                avatar_url: 'http://carl.com/avatar.jpg',
-                url: 'http://carl.com',
-                html_url: 'http://carl.com/html',
-                repos_url: 'http://carl.com/repos' 
-              }            
-            ]
-  };
-  
-  class UserServiceStub {
-    getUsers() {
-      return Observable.create(observer => {
-        observer.next(mockUsers);      
-        observer.complete();
-    });
-    }
-  }
-  
-  let userServiceStub = new UserServiceStub();
   let fixture;
   let comp;
   
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UserListComponent ],
-      providers: [{ provide: UserDataService, useValue: userServiceStub }]
+      providers: [UserDataService, { provide: XHRBackend, useClass: MockBackend }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [HttpModule]
     })
     .compileComponents();
      
     fixture = TestBed.createComponent(UserListComponent);
     comp = fixture.componentInstance;
-    
-    userServiceStub = TestBed.get(UserDataService);    
+    let user1 = new User();
+    user1.login = 'dan';
+    let user2= new User();
+    user2.login = 'carl';
+    let users = [user1,user2];
+    comp.users = users;
+    fixture.detectChanges();
   }));  
 
-  it('should create', () => {
+  it('should verify that component was created', () => {
     expect(comp).toBeTruthy();
   });
   
-  describe('#UserListComponent()', () => {     
-
-    /*it('should load 2 users from service', inject([UserDataService], (userDataService) => {
-      userDataService.getUsers().subscribe((users) => {
-          expect(users.length).toBe(2);
-          expect(users[0].login).toEqual('dan');
-          expect(users[1].login).toEqual('carl');            
-        });    
-    }));*/
-
-  });
+  it('should verify that "main" element was created in template', inject([UserDataService], (userDataService) => {
+    expect(comp.users.length).toBe(2);
+    let de = fixture.debugElement.query(By.css('.main'));
+    let el = de.nativeElement;
+    expect(el).toBeTruthy();   
+  }));
+  
 });

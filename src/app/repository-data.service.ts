@@ -15,7 +15,13 @@ export class RepositoryDataService {
   constructor(private http: Http) { }
 
   getRepositories(login: string, page: number, range: number) {    
-    return this.http.get(`${this.REPOSITORIES_URL.replace(/:login/gi,login)}`,{ params:  { page: page , per_page: range }})
-                  .map(res => res.json());    
+    return this.http.get(
+      `${this.REPOSITORIES_URL.replace(/:login/gi,login)}`,
+        { params:  { 
+          page: page ,
+          per_page: range
+        }
+      })
+      .map(res => res.json());    
   }
 }
