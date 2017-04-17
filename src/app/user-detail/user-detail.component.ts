@@ -6,10 +6,7 @@ import { User } from '../user';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailComponent implements OnInit {
-
-  @Input() user: User;  
+export class UserDetailComponent {
+  @Input() user: User;
   constructor() { }
-
-  ngOnInit() { }
 }

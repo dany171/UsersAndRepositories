@@ -16,30 +16,30 @@ describe('RepositoryDataService', () => {
   it('should veritfy if service is instantiated ', inject([RepositoryDataService], (service: RepositoryDataService) => {
     expect(service).toBeTruthy();
   }));
-  
-  describe('#getRepositories()', () => {  
+
+  describe('#getRepositories()', () => {
   it('should return an Observable<Array<Repository>>', inject(
-    [RepositoryDataService, XHRBackend], 
+    [RepositoryDataService, XHRBackend],
     (repositoryDataService, mockBackend) => {
 
-      const mockResponse = 
+      const mockResponse =
          [
-          { 
+          {
             id: 1,
             name: 'repo1',
             description: 'my desc',
             html_url: 'http://dan.com/repo1/html',
             open_issues_count: 10,
-            forks: 10 
+            forks: 10
           },
-          { 
+          {
             id: 2,
             name: 'repo2',
             description: 'my desc 2',
             html_url: 'http://carl.com/repo2/html',
             open_issues_count: 5,
-            forks: 3 
-          }            
+            forks: 3
+          }
         ];
 
       mockBackend.connections.subscribe((connection) => {
@@ -47,12 +47,12 @@ describe('RepositoryDataService', () => {
           body: JSON.stringify(mockResponse)
         })));
       });
-            
+
       repositoryDataService.getRepositories('dan', 1, 2).subscribe((repositories) => {
         expect(repositories.length).toBe(2);
         expect(repositories[0].name).toEqual('repo1');
-        expect(repositories[1].name).toEqual('repo2');            
-      });    
+        expect(repositories[1].name).toEqual('repo2');
+      });
     }));
   });
 });

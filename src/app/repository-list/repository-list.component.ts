@@ -18,12 +18,14 @@ import { UserDataService } from '../user-data.service';
 })
 export class RepositoryListComponent implements OnInit {
 
-  login;
   RANGE = 10;
+
+  login: string;
   user: User;
   repositories: Repository[] = [];
   groups = [];
   currentPage = 1;
+  loginParam: string = 'login';
   constructor(
     private repositoryDataService: RepositoryDataService,
     private userDataService: UserDataService,
@@ -32,26 +34,34 @@ export class RepositoryListComponent implements OnInit {
   ) {}
     
   ngOnInit(): void {    
-    this.route.params.subscribe(params => {
-       this.login = params['login']; 
-       this.getUser(this.login)
-       .subscribe(user => {
-         this.user = user;
-         this.getRepositories(this.login, this.currentPage, this.RANGE);  
-         
-       });      
-    });
+    this.getData();
   }
 
-  onPageChange(page: number) {
+  getData(): void {
+    this.route.params.subscribe(
+      params => { 
+        this.login = params[this.loginParam]; 
+        this.getUser(this.login)
+        .subscribe(
+          user => {
+            this.user = user;
+            this.getRepositories( this.login, this.currentPage, this.RANGE);
+          }
+        );
+      }
+    );
+  }
+
+  onPageChange(page: number) :void {
     this.getRepositories(this.login, page, this.RANGE);
   }
 
-  getRepositories(login: string, page: number, range: number){
+  getRepositories(login: string, page: number, range: number): void{
     this.route.params
-    .map(params=>params['login'])
-    .switchMap(login => this.repositoryDataService.getRepositories(login, page, range))
-    .subscribe(repositories => {
+    .map(params=>params[this.loginParam])
+    .switchMap(
+      login => this.repositoryDataService.getRepositories(login, page, range)
+    ).subscribe(repositories => {
         this.repositories = repositories;
         this.createGroups(repositories);
         }

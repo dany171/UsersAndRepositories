@@ -6,7 +6,7 @@ describe('Repository', () => {
   });
 
   it('should accept values in Repository constructor', () => {
-    let repository = new Repository({
+    const repository = new Repository({
       id: 1,
       name: 'repo1',
       description: 'my repo',
@@ -16,7 +16,7 @@ describe('Repository', () => {
     });
     expect(repository.id).toEqual(1);
     expect(repository.name).toEqual('repo1');
-    expect(repository.description).toEqual('my repo');    
+    expect(repository.description).toEqual('my repo');
     expect(repository.html_url).toEqual('http://dan.com/repo1');
     expect(repository.open_issues_count).toEqual(2);
     expect(repository.forks).toEqual(3);

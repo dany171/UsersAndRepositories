@@ -10,18 +10,19 @@ import { Repository } from './repository';
 export class RepositoryDataService {
 
   private repositories: Repository[] = [];
-  private REPOSITORIES_URL = 'https://api.github.com/users/:login/repos';
-  
+  private REPOSITORIES_URL = 'https://api.github.com/users';
+
   constructor(private http: Http) { }
 
-  getRepositories(login: string, page: number, range: number) {    
+  getRepositories(login: string, page: number, range: number) {
     return this.http.get(
-      `${this.REPOSITORIES_URL.replace(/:login/gi,login)}`,
-        { params:  { 
+      this.REPOSITORIES_URL + `/${ login }/repos`,
+        {
+          params: {
           page: page ,
           per_page: range
         }
       })
-      .map(res => res.json());    
+      .map(res => res.json());
   }
 }

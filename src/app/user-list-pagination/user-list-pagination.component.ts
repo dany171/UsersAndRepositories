@@ -10,7 +10,7 @@ export class UserListPaginationComponent {
   @Output() onUserListPageChange = new EventEmitter();
   constructor() { }
 
-  nextPage(){    
+  nextPage() {    
     this.onUserListPageChange.emit();
   }
 }

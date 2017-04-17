@@ -8,37 +8,40 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class PaginationComponent implements OnInit {
   @Input() totalElements: number;
   @Input() currentPage: number;
-  totalPages: number;
-  @Input() range;
-  @Output() onPageChange = new EventEmitter<number>();
+  @Input() range: number;
 
-  constructor() {    
+  @Output() onPageChange: EventEmitter<number> = new EventEmitter<number>();
+
+  totalPages: number;
+
+  constructor() {
   }
 
   ngOnInit() {
     this.currentPage = 1;
-    this.totalPages =  Math.floor(this.totalElements/this.range);    
+    const totalPagesRealNumber: number = this.totalElements / this.range;
+    this.totalPages =  Math.floor(totalPagesRealNumber);
   }
-  
-  hasNext(){
+
+  hasNext() {
     return this.currentPage < this.totalPages;
   }
 
-  hasPrevious(){
+  hasPrevious() {
     return this.currentPage > 1;
   }
 
-  nextPage(){
+  nextPage() {
     this.currentPage++;
     this.emitChange();
   }
 
-  previousPage(){
+  previousPage() {
     this.currentPage--;
     this.emitChange();
   }
 
-  emitChange(){
+  emitChange() {
     this.onPageChange.emit(this.currentPage);
   }
 }

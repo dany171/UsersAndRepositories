@@ -6,12 +6,9 @@ import { Repository } from '../repository';
   templateUrl: './repository-detail.component.html',
   styleUrls: ['./repository-detail.component.css']
 })
-export class RepositoryDetailComponent implements OnInit {
+export class RepositoryDetailComponent {
 
   @Input() repository: Repository;
 
   constructor() { }
-
-  ngOnInit() {}
-
 }

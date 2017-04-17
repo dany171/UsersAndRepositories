@@ -5,8 +5,8 @@ import { MockBackend } from '@angular/http/testing';
 import { User } from './user';
 import { UserDataService } from './user-data.service';
 
-describe('UserDataService', () => {  
-  let since = 1;
+describe('UserDataService', () => {
+  const since = 1;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [ HttpModule ],
@@ -17,13 +17,13 @@ describe('UserDataService', () => {
   it('should veritfy if service is instantiated ', inject([UserDataService], (userDataService) => {
     expect(userDataService).toBeTruthy();
   }));
-  
-  describe('#getUsers()', () => {  
+
+  describe('#getUsers()', () => {
     it('should return an Observable<Array<User>>', inject(
-      [UserDataService, XHRBackend], 
+      [UserDataService, XHRBackend],
       (userDataService, mockBackend) => {
-      
-        const mockResponse = 
+
+        const mockResponse =
            [
             { id: 1,
               login: 'dan',
@@ -36,10 +36,10 @@ describe('UserDataService', () => {
               avatar_url: 'http://carl.com/avatar.jpg',
               url: 'http://carl.com',
               html_url: 'http://carl.com/html',
-              repos_url: 'http://carl.com/repos' 
-            }            
+              repos_url: 'http://carl.com/repos'
+            }
           ];
-        
+
         mockBackend.connections.subscribe((connection) => {
           connection.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(mockResponse)
@@ -48,8 +48,8 @@ describe('UserDataService', () => {
         userDataService.getUsers(since).subscribe((users) => {
           expect(users.length).toBe(2);
           expect(users[0].login).toEqual('dan');
-          expect(users[1].login).toEqual('carl');            
-        });    
+          expect(users[1].login).toEqual('carl');
+        });
     }));
   });
 });
