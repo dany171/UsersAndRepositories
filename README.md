@@ -1,3 +1,20 @@
+This is my first Angular 4 project :)
+
+This app consumes Git's REST services to list users and repositories.
+
+The first screen (users) shows a list of Github users (30 users), each one in card, 4 cards per column and a set of information about each user.
+Each card allows you to see user's repositories by clicking in Repositories link (this send user to second screen). Also URL changes adding the owner's username.
+Each card allows to see user's Github page.
+A Next Users link is shown at page's bottom, this allows you to pick another bunch of users.
+
+The second screen (repositories) shows a list of user's repositories, in the same distribution than first screen.
+Each card contains  link to repository, the repository name, a description, the issues count and forks count.
+A simple pagination tool is located at page's bottom, this allows navigation through user repositories.
+
+You can find the project deployed here: https://dry-peak-67008.herokuapp.com/users
+
+---
+
 # UsersAndRepositories
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
