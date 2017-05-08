@@ -11,7 +11,7 @@ The second screen (repositories) shows a list of user's repositories, in the sam
 Each card contains  link to repository, the repository name, a description, the issues count and forks count.
 A simple pagination tool is located at page's bottom, this allows navigation through user repositories.
 
-You can find the project deployed here: https://dry-peak-67008.herokuapp.com/users
+You can find the project deployed here: https://dry-peak-67008.herokuapp.com
 
 ---
 
